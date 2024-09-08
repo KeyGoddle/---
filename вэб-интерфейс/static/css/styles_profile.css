@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1c1c1e;
+    color: #ffffff;
+    padding-top: 10vh; /* Добавляем отступ, чтобы контент не перекрывался заголовком */
+    width: 100%;
+    height: 100vh;
+}
+
+/* Отзывчивая настройка заголовка */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1% 2%;
+    background-color: #1c1c1e;
+    z-index: 1000;
+    opacity: 0.9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+.logo img {
+    width: 5vw; /* Отзывчивый размер изображения */
+    height: 5vw;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+.logo span {
+    font-size: 2vw; /* Отзывчивый размер текста */
+    font-weight: bold;
+    color: #f7b32b;
+    margin-left: 1vw; /* Отзывчивый отступ */
+}
+
+.nav a {
+    margin: 0 3vw; /* Отзывчивые отступы */
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 2vh;
+}
+a,a:focus, a:active {
+    outline: none; /* Убирает обводку при фокусе */
+    text-decoration: none; /* Убирает подчеркивание */
+    color: inherit; /* Оставляет цвет таким же */
+}
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.profile-info {
+    flex: 3;
+}
+.profile {
+    display: flex;
+    align-items: center;
+}
+.profile-avatar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+.profile-avatar form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-avatar input[type="file"] {
+    margin: 10px 0;
+}
+
+.profile-avatar button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.profile-avatar button:hover {
+    background-color: #0056b3;
+}

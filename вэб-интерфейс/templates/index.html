@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResuFlow</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Logo"></a>
+            <a href="{{ url_for('index') }}"><span class="logo-text">ResuFlow</span></a>
+        </div>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="#">Рекомендации</a></li>
+                <li><a href="#">Анализ резюме</a></li>
+                <li><a href="{{ url_for('about') }}">О проекте</a>  </li>
+            </ul>
+        </nav>
+        <div class="profile">
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('profile') }}" class="profile-icon-link">
+                    <img src="{{ url_for('static', filename='images/profile-icon.svg') }}" alt="Profile Icon">
+                </a>
+                
+            {% else %}
+                <a href="{{ url_for('login') }}" class="login-text">Войти</a>
+                <a href="{{ url_for('login') }}" class="login-text">
+                    <img src="{{ url_for('static', filename='images/profile-icon.svg') }}" alt="Profile Icon">
+                </a>
+            {% endif %}
+        </div>
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="mobile-nav" id="mobile-nav">
+            <ul>
+                <li><a href="#">Рекомендации</a></li>
+                <li><a href="#">Анализ резюме</a></li>
+                <li><a href="{{ url_for('about') }}">О проекте</a>  </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+        <div class="content">
+            <h1>Сервис анализа резюме</h1>
+            <p>ResuFlow анализирует ваше резюме и предлагает профессии, которые максимально соответствуют вашим навыкам и опыту. Получите персональные рекомендации и прогнозы зарплат в один клик</p>
+            <div class="button-container">
+                <button class="cta-button">Начать</button>
+            </div>
+        </div>
+        <div class="visual">
+            <img src="{{ url_for('static', filename='images/3d-object.svg') }}" alt="3D Object" class="background-blur">
+        </div>
+    </main>
+
+       <!-- New Section for Job Market -->
+       <section class="job-market">
+        <h2>Рынок вакансий</h2>
+        <div class="job-market-container">
+            <div class="left-column">
+                <div class="upload-area" id="upload-area">
+                    <form id="file-upload-form" action="/upload" method="post" enctype="multipart/form-data">
+                        <input type="file" id="file-input" name="file" accept=".pdf, .doc, .docx" hidden>
+                        <div class="drag-area" id="drag-area">
+                            <img src="{{ url_for('static', filename='images/upload-icon.svg') }}" alt="Upload Icon" class="upload-icon">
+                            <p>Резюме в формате PDF, WORD размером до 250мб</p>
+                        </div>
+                        <button type="submit" class="upload-button">Загрузить резюме</button>
+                    </form>
+                </div>
+                
+                
+                <div class="filters">
+                    <div class="filter">
+                        <label for="country">Страна</label>
+                        <select id="country">
+                            <option>Российская Федерация</option>
+                        </select>
+                    </div>
+                    <div class="filter">
+                        <label for="region">Регион</label>
+                        <select id="region">
+                            <option>Москва и Московская область</option>
+                        </select>
+                    </div>
+                    <button class="forecast-button">Прогноз</button>
+                </div>
+                <div class="salary-expectations">
+                    <h3>Зарплатные ожидания соискателя:</h3>
+                    <div class="salary-range">
+                        От 120 000 до 150 000 руб/мес.
+                    </div>
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="job-listings">
+                    <div class="job-card">
+                        <h4>Специалист по обработке данных</h4>
+                        <p>120 000 – 170 000 ₽ на руки</p>
+                        <p>Conte Elegant (ИП Логинский Юрий Теодорович)<br>Москва</p>
+                        <button class="details-button">Подробнее</button>
+                    </div>
+                    <div class="job-card">
+                        <h4>Специалист по обработке данных</h4>
+                        <p>120 000 – 170 000 ₽ на руки</p>
+                        <p>Conte Elegant (ИП Логинский Юрий Теодорович)<br>Москва</p>
+                        <button class="details-button">Подробнее</button>
+                    </div>
+                    <!-- Add more job listings as needed -->
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Для работы</h4>
+                <ul>
+                    <li><a href="#">Сервисы</a></li>
+                    <li><a href="#">Тарифы</a></li>
+                    <li><a href="#">Документация</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Контакты</h4>
+                <ul>
+                    <li><a href="mailto:support@resuflow.ru">support@resuflow.ru</a></li>
+                    <li><a href="#">Техническая поддержка</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Компания</h4>
+                <ul>
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">Брендбук</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>ResuFlow</h4>
+                <div class="social-icons">
+                    
+                    <a href="#"><img src="{{ url_for('static', filename='images/telegram-icon.svg') }}" alt="Telegram"></a>
+                    <a href="https://github.com/KeyGoddle/Hach--"><img src="{{ url_for('static', filename='images/github-icon.svg') }}" alt="GitHub"></a>
+                    <a href="#"><img src="{{ url_for('static', filename='images/vk-icon.svg') }}" alt="VK"></a>
+            
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Политика конфиденциальности</p>
+            <p>Условия использования</p>
+            <p>2024 @resuflow</p>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
+
+<script>
+    const fileInput = document.getElementById('file-input');
+    const dragArea = document.getElementById('drag-area');
+
+    // Highlight drag area on drag over
+    dragArea.addEventListener('dragover', (event) => {
+        event.preventDefault();
+        dragArea.classList.add('hover');
+    });
+
+    // Remove highlight on drag leave
+    dragArea.addEventListener('dragleave', () => {
+        dragArea.classList.remove('hover');
+    });
+
+    // Handle file drop
+    dragArea.addEventListener('drop', (event) => {
+        event.preventDefault();
+        dragArea.classList.remove('hover');
+        const files = event.dataTransfer.files;
+        if (files.length > 0) {
+            fileInput.files = files; // Assign dropped files to file input
+        }
+    });
+
+    // Handle click on the drag area to open file dialog
+    dragArea.addEventListener('click', () => {
+        fileInput.click();
+    });
+
+    // Update the drag area text when a file is selected via file input
+    fileInput.addEventListener('change', () => {
+        const files = fileInput.files;
+        if (files.length > 0) {
+            dragArea.querySelector('p').textContent = `Файл выбран: ${files[0].name}`;
+        }
+    });
+</script>

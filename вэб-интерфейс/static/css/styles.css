@@ -1,0 +1,651 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1c1c1e;
+    color: #ffffff;
+    padding-top: 10vh; /* Добавляем отступ, чтобы контент не перекрывался заголовком */
+    width: 100%;
+    height: 100vh;
+}
+
+/* Отзывчивая настройка заголовка */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1% 2%;
+    background-color: #1c1c1e;
+    z-index: 1000;
+    opacity: 0.9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+.logo img {
+    width: 5vw; /* Отзывчивый размер изображения */
+    height: 5vw;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+.logo span {
+    font-size: 2vw; /* Отзывчивый размер текста */
+    font-weight: bold;
+    color: #f7b32b;
+    margin-left: 1vw; /* Отзывчивый отступ */
+}
+a,a:focus, a:active {
+    outline: none; /* Убирает обводку при фокусе */
+    text-decoration: none; /* Убирает подчеркивание */
+    color: inherit; /* Оставляет цвет таким же */
+}
+.nav a {
+    margin: 0 3vw; /* Отзывчивые отступы */
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 2vh;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile img {
+    width: 3vw; /* Отзывчивый размер изображения */
+    height: 3vw;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.login-text {
+    font-size: 2vh;
+    color: #ffffff;
+    margin-right: 1vw; /* Отзывчивый отступ */
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5vh 4vw;
+    gap: 2vw; /* Gap between content and visual */
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+
+.content {
+    flex: 1 1 50%; /* Takes up half the width */
+    max-width: 50%;
+    margin-bottom: 5vh;
+}
+
+.content h1 {
+    font-size: 5vw; /* Отзывчивый размер заголовка */
+    margin-bottom: 2vh;
+}
+
+.content p {
+    font-size: 2.5vh;
+    line-height: 1.6;
+    margin-bottom: 3vh;
+}
+
+.cta-button {
+    padding: 2vh 4vw;
+    font-size: 2.5vh;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+}
+.visual {
+    flex: 1 1 45%; /* Takes up less width compared to content */
+    max-width: 45%;
+}
+.visual img {
+    max-width: 100%;
+    max-height: auto;
+    width: 55vw; /* Отзывчивый размер изображения */
+    height: 25vw;
+   
+}
+
+/* Стили для маленьких экранов (max-width: 767px) */
+@media (max-width: 767px) {
+    .header {
+        height: 10vh;
+    }
+
+    .main {
+        position: relative; /* Создает контекст для абсолютного позиционирования */
+   
+    }
+    .visual img{
+        width: 80%; /* Отзывчивый размер изображения */
+        height: 80%;
+       
+    }
+    /* Стили для размытого фонового изображения */
+    .background-blur {
+        position: absolute; /* Абсолютное позиционирование */
+        top: 25%;
+        left: 20%;
+        width: 90%; /* Увеличивает изображение на 20% */
+        height: 90%; /* Увеличивает изображение на 20% */
+        object-fit: contain; /* Изображение покрывает весь контейнер, сохраняя пропорции */
+        filter: blur(1px); /* Применяет размытие */
+        z-index: -1; /* Отправляет изображение на задний план */
+        opacity: 0.6;
+    
+    }
+    
+    /* Стили для текста и контента */
+    .content {
+        position: relative; /* Задает контекст для текста, чтобы он был выше фона */
+        z-index: 1; /* Убедитесь, что текст находится выше по слою, чем фоновое изображение */
+        padding: 20px; /* Добавляет отступы вокруг текста */
+        color: #fff; /* Цвет текста для контраста */
+        flex: 1 1 100%; /* Takes up half the width */
+        max-width: 100%;
+        margin-bottom: 20vh;
+    }
+    .content h1 {
+        font-size: 9vw; /* Отзывчивый размер заголовка */
+        margin-bottom: 2vh;
+    }
+    .content p {
+        font-size: 3.0vh;
+        line-height: 1.6;
+        margin-bottom: 3vh;
+    }
+    .logo img {
+        width: 9vw; /* Отзывчивый размер изображения */
+        height: 9vw;
+        border-radius: 50%;
+        margin-right: 8px;
+    }
+    .logo span {
+        font-size: 5vw; /* Отзывчивый размер текста */
+        font-weight: bold;
+        color: #f7b32b;
+        margin-left: 1vw; /* Отзывчивый отступ */
+    }
+    .button-container {
+        display: flex; /* Включает Flexbox */
+        justify-content: center; /* Центрирует по горизонтали */
+        align-items: center; /* Центрирует по вертикали, если это необходимо */
+        height: 100%; /* Задайте нужную высоту, если требуется */
+    }
+    .cta-button {
+        padding: 2vh 8vw;
+        font-size: 2.5vh;
+        color: #ffffff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3
+        s ease;
+    }
+    .profile img {
+        width: 7vw; /* Отзывчивый размер изображения */
+        height: 7vw;
+        border-radius: 50%;
+        margin-right: 1vh;
+    }
+    .profile {
+        margin-left: 10vh;
+    }
+}
+
+.job-market {
+    padding: 4vh 4vw;
+    background-color: #282828;
+    width: 100%; /* Обеспечиваем, что секция займет всю ширину контейнера */
+    box-sizing: border-box; /* Учитываем паддинги и границы */
+}
+
+.job-market h2 {
+    font-size: 4vw;
+    margin-bottom: 2vh;
+    text-align: center; /* Центрируем заголовок для лучшего отображения */
+}
+
+/* Контейнер для колонок */
+.job-market-container {
+    display: flex;
+    flex-wrap: wrap; /* Разрешает колонкам переноситься на новую строку при нехватке места */
+    gap: 2vh; /* Зазор между колонками */
+}
+/* Для больших экранов используем флекс-ряд с равномерным распределением */
+@media (min-width: 768px) {
+    .job-market-container {
+        flex-direction: row;
+        justify-content: space-between; /* Равномерное распределение пространства между колонками */
+        gap: 2vw; /* Уменьшение промежутков для больших экранов */
+    }
+}
+/* Базовые стили для левой и правой колонок */
+.left-column, .right-column {
+    flex: 1; /* Одинаковая ширина для колонок */
+    display: flex;
+    flex-direction: column;
+    gap: 4vh; /* Зазор между элементами в колонке */
+    min-width: 0; /* Для предотвращения переполнения */
+}
+
+
+/* Адаптивность на маленьких экранах */
+@media (max-width: 768px) {
+    .job-market-container {
+        flex-direction: column; /* Размещаем колонки вертикально на узких экранах */
+    }
+    .left-column, .right-column {
+        width: 100%; /* Занимают всю ширину контейнера */
+        max-width: 100%; /* Ограничение на максимальную ширину */
+    }
+}
+
+/* Адаптация для средних и больших экранов */
+@media (min-width: 768px) {
+    .job-market-container {
+        width: 100%; 
+        flex-direction: row; /* Горизонтальное расположение колонок */
+        justify-content: space-between; /* Равномерное распределение колонок */
+        gap: 2vw; /* Промежуток между колонками */
+    }
+}
+
+/* Убедимся, что загрузочная область и фильтры подстраиваются под размер экрана */
+.upload-area {
+    border: 2px dashed #5a5a5a; /* Цвет рамки */
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #3a3a3a; /* Цвет фона зоны загрузки */
+    margin: 20px 0;
+    position: relative;
+}
+.drag-area {
+    padding: 50px 20px;
+    margin: 10px 0;
+    border-radius: 10px;
+    background-color: #515151; /* Цвет внутреннего фона */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.upload-icon {
+    width: 50px; /* Размер иконки */
+    margin-bottom: 10px;
+    opacity: 0.6; /* Прозрачность иконки */
+}
+.upload-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.upload-button:hover {
+    background-color: #0056b3;
+}
+/* Гибкие фильтры */
+.filters {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    align-items: stretch; /* Растягиваем элементы на всю ширину */
+}
+.filter label {
+    margin-bottom: 1vh;
+    font-size: 2vh;
+}
+
+.filter select {
+    padding: 1.5vh;
+    background-color: #3a3a3a;
+    border: none;
+    color: #ffffff;
+    font-size: 2vh;
+    border-radius: 5px;
+}
+
+.forecast-button {
+    padding: 2vh 4vw; /* Адаптивные отступы, зависящие от размера экрана */
+    font-size: 2.5vh; /* Адаптивный размер текста */
+    color: #ffffff; /* Белый текст */
+    background-color: #007bff; /* Синий фон */
+    border: none; /* Без границ */
+    border-radius: 0.5vh; /* Радиус скругления кнопки */
+    width: 100%; /* Занимает всю доступную ширину */
+    cursor: pointer; /* Указатель мыши в виде руки */
+    transition: background-color 0.3s ease; /* Плавный переход фона при наведении */
+    max-width: 100%; /* Предотвращает переполнение */
+    box-sizing: border-box; /* Учитываем паддинги и границы */
+}
+
+/* Стиль при наведении */
+.forecast-button:hover {
+    background-color: #0056b3; /* Темно-синий фон при наведении */
+}
+
+/* Адаптация для маленьких экранов */
+@media (max-width: 767px) {
+    .forecast-button {
+        padding: 3vh 6vw; /* Увеличенные отступы для удобного нажатия */
+        font-size: 3vh; /* Увеличенный размер текста для читабельности */
+    }
+}
+
+/* Адаптация для больших экранов */
+@media (min-width: 768px) {
+    .forecast-button {
+        padding: 1.5vh 3vw; /* Более сжатые отступы для больших экранов */
+        font-size: 2vh; /* Уменьшенный размер текста для больших экранов */
+    }
+}
+/* Корректировка кнопки поиска */
+.forecast-button {
+    flex: 0; /* Не растягивается вместе с контейнером */
+    margin-top: 2vh; /* Добавляет отступ сверху для отделения от других элементов */
+}
+
+.salary-expectations {
+    background-color: #3a3a3a;
+    padding: 3vh;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.salary-expectations h3 {
+    font-size: 3vh;
+    margin-bottom: 2vh;
+}
+
+.salary-range {
+    font-size: 2.5vh;
+}
+
+.job-listings {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+.job-card {
+    background-color: #333333;
+    padding: 2vh;
+    border-radius: 10px;
+}
+
+.job-card h4 {
+    font-size: 2.5vh;
+    margin-bottom: 1vh;
+}
+
+.job-card p {
+    margin: 0;
+    font-size: 2vh;
+}
+
+.details-button {
+    margin-top: 2vh;
+    padding: 1.5vh 3vw;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.details-button:hover {
+    background-color: #0056b3;
+}
+
+.footer {
+    background-color: #3a3a3a;
+    padding: 5vh 6vw;
+    color: #ffffff;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: row; /* Изменено с column на row */
+    gap: 4vw; /* Зазор между колонками */
+    margin-bottom: 4vh;
+    justify-content: space-around; /* Равномерное распределение пространства между колонками */
+    flex-wrap: wrap; /* Разрешает перенос колонок на новую строку, если места не хватает */
+}
+
+.footer-column {
+    flex: 1;
+    text-align: center;
+    min-width: 200px; /* Минимальная ширина колонок */
+}
+
+.footer-column h4 {
+    font-size: 2.5vh;
+    margin-bottom: 2vh;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 1vh;
+}
+
+.footer-column ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #007bff;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 3vw;
+}
+
+.social-icons a img {
+    width: 4vw;
+    height: 4vw;
+}
+
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid #5a5a5a;
+    padding-top: 4vh;
+    font-size: 2vh;
+    text-align: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: #b0b0b0;
+}
+
+
+
+/* Основные стили */
+.nav-list {
+    display: flex;
+    gap: 20px;
+}
+
+/* Скрытие гамбургера и мобильного меню на больших экранах */
+.hamburger,
+.mobile-nav {
+    display: none;
+}
+
+/* Стили для гамбургера */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001; /* Поверх контента */
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: #fff;
+}
+
+/* Медиа-запрос для экрана до 767px */
+@media (max-width: 767px) {
+    .nav-list {
+        display: none; /* Скрываем обычное меню */
+    }
+
+    .hamburger {
+        display: flex; /* Показываем гамбургер */
+    }
+
+    .mobile-nav {
+        display: none; /* По умолчанию скрываем мобильное меню */
+        position: absolute;
+        top: 10vh; /* Расположите под заголовком */
+        right: 0;
+        background-color: #1c1c1e;
+        width: 100%;
+        text-align: center;
+        z-index: 1000; /* Поверх остального контента */
+    }
+
+    .mobile-nav.open {
+        display: block; /* Показываем меню, когда оно открыто */
+    }
+
+    .mobile-nav ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .mobile-nav ul li {
+        padding: 15px 0;
+    }
+
+    .mobile-nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+    }
+}
+/* Основные стили */
+.nav-list {
+    display: flex;
+    gap: 20px;
+}
+
+/* Скрытие гамбургера и мобильного меню на больших экранах */
+.hamburger,
+.mobile-nav {
+    display: none;
+}
+
+/* Стили для гамбургера */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001; /* Поверх контента */
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: #fff;
+}
+
+/* Медиа-запрос для экрана до 767px */
+@media (max-width: 767px) {
+    .nav-list {
+        display: none; /* Скрываем обычное меню */
+    }
+
+    .hamburger {
+        display: flex; /* Показываем гамбургер */
+    }
+
+    .mobile-nav {
+        display: none; /* По умолчанию скрываем мобильное меню */
+        position: absolute;
+        top: 60px; /* Расположите под заголовком */
+        right: 0;
+        background-color: #1c1c1e;
+        width: 100%;
+        text-align: center;
+        z-index: 1000; /* Поверх остального контента */
+    }
+
+    .mobile-nav.open {
+        display: block; /* Показываем меню, когда оно открыто */
+    }
+
+    .mobile-nav ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .mobile-nav ul li {
+        padding: 15px 0;
+    }
+
+    .mobile-nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+    }
+}

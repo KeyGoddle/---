@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход - ResuFlow</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_login.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Logo"></a>
+            <a href="{{ url_for('index') }}"><span class="logo-text">ResuFlow</span></a>
+        </div>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="#">Рекомендации</a></li>
+                <li><a href="#">Анализ резюме</a></li>
+                <li><a href="{{ url_for('about') }}">О проекте</a></li>
+            </ul>
+        </nav>
+        <div class="profile">
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('profile') }}" class="profile-icon-link">
+                    <img src="{{ url_for('static', filename='images/profile-icon.svg') }}" alt="Profile Icon">
+                </a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="login-text">Войти</a>
+                <a href="{{ url_for('login') }}" class="login-text">
+                    <img src="{{ url_for('static', filename='images/profile-icon.svg') }}" alt="Profile Icon">
+                </a>
+            {% endif %}
+        </div>
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="mobile-nav" id="mobile-nav">
+            <ul>
+                <li><a href="#">Рекомендации</a></li>
+                <li><a href="#">Анализ резюме</a></li>
+                <li><a href="{{ url_for('about') }}">О проекте</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page">
+        <div class="container">
+            <div class="left">
+                <div class="login">Вход</div>
+                <div class="eula">Войдя, вы соглашаетесь с нашими условиями, которые вы, вероятно, не читали.</div>
+            </div>
+            <div class="right">
+                <svg viewBox="0 0 320 300">
+                    <defs>
+                        <linearGradient id="linearGradient" x1="13" y1="193.49992" x2="307" y2="193.49992" gradientUnits="userSpaceOnUse">
+                            <stop style="stop-color:#cda65a;" offset="0"/>
+                            <stop style="stop-color:#ff0000;" offset="1"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143"/>
+                </svg>
+                <div class="form">
+                    <form method="POST" action="{{ url_for('login') }}">
+                        {{ form.hidden_tag() }}
+                        <label for="username">{{ form.username.label }}</label>
+                        {{ form.username(id="username", class="form-control") }}
+                        <label for="password">{{ form.password.label }}</label>
+                        {{ form.password(id="password", class="form-control") }}
+                        <input type="submit" id="submit" value="Войти">
+                        <!-- Новый блок для регистрации -->
+                        <div class="register-block">
+                            <a href="{{ url_for('register') }}" class="register-link"><div class="register">Зарегистрироваться</div></a>
+                            
+                            <div class="register-eula">Зарегистрируйтесь, чтобы получить доступ ко всем функциям нашего сервиса.</div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+    <script src="{{ url_for('static', filename='js/scripts_login.js') }}"></script>
+</body>
+</html>

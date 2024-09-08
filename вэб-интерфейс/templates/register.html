@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация - ResuFlow</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Logo"></a>
+            <a href="{{ url_for('index') }}"><span class="logo-text">ResuFlow</span></a>
+        </div>
+        <nav class="nav">
+            <a href="{{ url_for('index') }}">Главная</a>
+        </nav>
+    </header>
+    <div class="form-container">
+        <form method="POST" action="{{ url_for('register') }}">
+            {{ form.hidden_tag() }}
+            <h2>Регистрация</h2>
+            <div class="form-group">
+                {{ form.username.label }}
+                {{ form.username(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.password.label }}
+                {{ form.password(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.confirm_password.label }}
+                {{ form.confirm_password(class="form-control") }}
+            </div>
+            <button type="submit" class="btn btn-primary">{{ form.submit.label }}</button>
+        </form>
+        <p>Уже есть аккаунт? <a href="{{ url_for('login') }}">Войдите</a></p>
+    </div>
+</body>
+</html>
